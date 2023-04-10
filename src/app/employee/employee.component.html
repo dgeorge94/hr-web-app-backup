@@ -2,9 +2,9 @@
 <mat-card>
   <mat-card-content>
     <table class="header-table">
+      <td class="td-wide"><h3>T-Number</h3></td>
       <td><h3>First Name</h3></td>
       <td><h3>Last Name</h3></td>
-      <td class="td-wide"><h3>T-Number</h3></td>
       <td ><h3>Job/Assignment Detail</h3></td>
       <td ><h3>Employment Status</h3></td>
       <td ><h3>Employment Dates</h3></td>
@@ -14,12 +14,12 @@
       <mat-expansion-panel *ngFor="let emp of employees">
         <mat-expansion-panel-header>
           <table>
+          <td> {{emp.tNumber}} </td>
           <td> {{ emp.firstName }} </td>
           <td> {{ emp.lastName }}  </td>
-          <td> {{emp.tNumber}} </td>
           <td> {{ emp.job }}  </td>
           <td> {{ emp.employmentStatus }} </td>
-          <td> {{ emp.employmentDates }} </td>
+          <td> {{ emp.employmentDates }} - {{emp.employmentDates}} </td>
           <td> ${{ emp.salary }}</td>
         </table>
         </mat-expansion-panel-header>
@@ -28,8 +28,8 @@
         <td>SSN: {{ emp.SSN }} </td>
         </table>
         <mat-action-row>
-         <a mat-button routerLink="/manage" color="accent">MANAGE</a>
-          <button mat-button color="warn">DELETE</button>
+         <a mat-button [routerLink]="['/manage', emp.id]" color="accent">MANAGE</a>
+          <button mat-button color="warn" (click)="onDelete(emp.id)">DELETE</button>
         </mat-action-row>
       </mat-expansion-panel>
     </mat-accordion>

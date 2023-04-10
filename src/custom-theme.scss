@@ -238,14 +238,16 @@ h2 {
 }
 
 .center-container {
-  background: none!important;
-  background-color: white;
+  opacity: 95% !important;
+  background-color: rgb(185, 184, 184) !important;
   display: flex;
   margin: auto;
   height: 40%;
   align-items: center;
   flex-direction: column;
 }
+
+
 
 html {
   box-sizing: border-box;
@@ -256,8 +258,7 @@ body {
 }
 
 .center-container-search {
-  background: none!important;
-  background-color: white;
+  background-color: rgb(185, 184, 184) !important;
   display: flex;
   margin: auto;
   height: 52%;
@@ -267,13 +268,22 @@ body {
 }
 
 .center-container-register {
-  background: none!important;
-  background-color: white;
+  background-color: rgb(185, 184, 184) !important;
+  opacity: 95% !important;
   display: flex;
   margin: auto;
   height: 60%;
   align-items: center;
   flex-direction: column;
+}
+
+.center-container-newEmp {
+  background-color: rgb(185, 184, 184) !important;
+  margin-top: 0em !important;
+  height: 40%;
+  align-items: center;
+  flex-direction: column;
+
 }
 
 .main-div{
@@ -311,6 +321,19 @@ body {
   margin-top: 5%;
   border: none;
 
+}
+
+.main-div-newEmp {
+  height: 60.05%;
+  width: 530px;
+  box-shadow: 0 5px 30px 10px rgba(0, 0, 0, 0.4); /* left-to-right shadow, top-to-bottom shadow, blur, spread, color (rgba alpha value = opacity) */
+  border-radius: 10px;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  margin-top: 0.2%;
+  border: none;
+  // columns: 2 auto;
 }
 
 .login-button {
@@ -408,6 +431,15 @@ $theme-accent: mat.define-palette($mat-accent, main, lighter, darker);
 h1 {
     color: #ffce2b;
 }
+
+body {
+  background-image: url('tech.jpg') !important;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+
+
 
 .menu-item-h4 {
   color: #ffce2b;

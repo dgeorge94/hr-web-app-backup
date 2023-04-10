@@ -12,51 +12,55 @@ import { RouterLink } from "@angular/router";
   styleUrls: ['./employee.component.css']
 })
 
-export class EmployeeComponent {
-// implements OnInit, OnDestroy{
+export class EmployeeComponent implements OnInit, OnDestroy {
 
 
-  employees = [
-     {  firstName: "John",
-        lastName: "Doe",
-        tNumber: "T00000001",
-        job: "Administrator",
-        employmentStatus: "Terminated",
-        employmentDates: "10/11/2020 - 12/20/2021",
-        salary: 20000,
-        DOB: "5/12/1983",
-        SSN: "111-11-1111"
 
-  },
-     {  firstName: "Jane",
-        lastName: "Doe",
-        tNumber: "T00000002",
-        job: "Adjunct",
-        employmentStatus: "Active",
-        employmentDates: "10/11/2020 - ",
-        salary:25000,
-        DOB:"06/05/1990",
-        SSN:"111-11-1112"
-      }
-   ];
+  // employees = [
+  //    {  firstName: "John",
+  //       lastName: "Doe",
+  //       tNumber: "T00000001",
+  //       job: "Administrator",
+  //       employmentStatus: "Terminated",
+  //       employmentDates: "10/11/2020 - 12/20/2021",
+  //       salary: 20000,
+  //       DOB: "5/12/1983",
+  //       SSN: "111-11-1111"
 
-  // employees: Employee[] = [];
-  // private employeesSub: Subscription;
+  // },
+  //    {  firstName: "Jane",
+  //       lastName: "Doe",
+  //       tNumber: "T00000002",
+  //       job: "Adjunct",
+  //       employmentStatus: "Active",
+  //       employmentDates: "10/11/2020 - ",
+  //       salary:25000,
+  //       DOB:"06/05/1990",
+  //       SSN:"111-11-1112"
+  //     }
+  //  ];
 
-  // constructor(public employeesService: EmployeesService) {}
+  employees: Employee[] = [];
+  private employeesSub: Subscription;
 
-  // ngOnInit() {
-  //   this.employees = this.employeesService.getEmployees();
-  //   this.employeesSub = this.employeesService.getEmployeeUpdateListener()
-  //     .subscribe((employees: Employee[]) => {
-  //       this.employees = employees;
-  //     });
+  constructor(public employeesService: EmployeesService) {}
 
-  // }
+  ngOnInit() {
+    this.employeesService.getEmployees();
+    this.employeesSub = this.employeesService.getEmployeeUpdateListener()
+      .subscribe((employees: Employee[]) => {
+        this.employees = employees;
+      });
 
-  // ngOnDestroy() {
-  //   this.employeesSub.unsubscribe();
+  }
 
-  // }
+  onDelete(employeeID: string) {
+    this.employeesService.deleteEmployee(employeeID);
+  }
+
+  ngOnDestroy() {
+    this.employeesSub.unsubscribe();
+
+  }
 
 }

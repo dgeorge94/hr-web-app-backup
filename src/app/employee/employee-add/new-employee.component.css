@@ -1,0 +1,19 @@
+mat-card {
+  padding-top: 0em !important;
+  margin-top: 0em !important;
+
+}
+mat-form  {
+  padding-top: 0em;
+  margin-top: 0em;
+
+}
+mat-form-field {
+  padding: 0em;
+  margin-top: 0em;
+}
+
+h3 {
+  color: #ffce2b;
+}
+

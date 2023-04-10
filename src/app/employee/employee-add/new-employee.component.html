@@ -1,0 +1,128 @@
+
+<div class="main-div-newEmp">
+  <form (submit)="onSaveEmployee(newEmpForm)" #newEmpForm="ngForm">
+    <mat-card class="center-container-newEmp">
+
+      <mat-card-header>
+
+          <h2>Employee Information</h2>
+
+      </mat-card-header>
+
+          <mat-form-field class="example-form">
+            <mat-label>T-Number</mat-label>
+            <input matInput
+                  type="text"
+                  id="tNumber"
+                  name="tNumber"
+                  required
+                  [ngModel]="post?.tNumber"
+                  #tNumberInput="ngModel"
+                  autocomplete="off">
+          </mat-form-field>
+
+          <mat-form-field class="example-form">
+              <mat-label>First Name</mat-label>
+              <input matInput
+                     type="text"
+                     id="firstName"
+                     name="firstName"
+                     required
+                     [ngModel]="post?.firstName"
+                     #fNameInput="ngModel"
+                     autocomplete="off">
+          </mat-form-field>
+
+          <mat-form-field class="example-form">
+              <mat-label>Last Name</mat-label>
+              <input matInput
+                     type="text"
+                     id="lastName"
+                     name="lastName"
+                     required
+                     [ngModel]="post?.lastName"
+                     #lNameInput="ngModel"
+                     autocomplete="off">
+          </mat-form-field>
+
+          <mat-form-field class="example-form">
+              <mat-label>Job Title</mat-label>
+              <input matInput
+                     type="text"
+                     id="job"
+                     placeholder="Job Title"
+                     name="job"
+                     required
+                     [ngModel]="post?.job"
+                     #jobInput="ngModel"
+                     autocomplete="off">
+          </mat-form-field>
+          <mat-form-field class="example-form">
+              <mat-label>Hire Date</mat-label>
+              <input matInput [matDatepicker] = "picker"
+                     type="text"
+                     id="employmentDates"
+                     placeholder="MM/DD/YYYY"
+                     name="employmentDates"
+                     required
+                     [ngModel]="post?.employmentDates"
+                     #employmentDateInput="ngModel"
+                     autocomplete="off">
+                     <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                     <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+
+
+        <mat-form-field class="example-form">
+          <mat-label>Salary</mat-label>
+          <input matInput
+                 type="number"
+                 id="salary"
+                 placeholder="Salary"
+                 name="salary"
+                 required
+                 [ngModel]="post?.salary"
+                 #salaryInput="ngModel"
+                 autocomplete="off">
+      </mat-form-field>
+
+      <mat-form-field class="example-form">
+        <mat-label>Date of Birth</mat-label>
+        <input matInput [matDatepicker] = "birthDatepicker"
+        type="text"
+        id="DOB"
+        placeholder="MM/DD/YYYY"
+        name="DOB"
+        required
+        [ngModel]="post?.DOB"
+        #employmentDateInput="ngModel"
+        autocomplete="off">
+        <mat-datepicker-toggle matIconSuffix [for]="birthDatepicker"></mat-datepicker-toggle>
+        <mat-datepicker #birthDatepicker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field class="example-form">
+      <mat-label>SSN</mat-label>
+      <input matInput
+             type="text"
+             id="SSN"
+             placeholder="SSN"
+             name="SSN"
+             required
+             [ngModel]="post?.SSN"
+             #SSNInput="ngModel"
+             autocomplete="off">
+  </mat-form-field>
+
+
+
+          <button mat-raised-button
+          color="primary"
+          class="login-button"
+          [disabled]="!newEmpForm.valid"
+          type="submit">
+          <h3>Save Employee</h3></button>
+
+    </mat-card>
+  </form>
+</div>

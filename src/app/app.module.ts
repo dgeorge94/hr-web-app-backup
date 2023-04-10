@@ -12,6 +12,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTableModule } from '@angular/material/table';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+
 
 
 
@@ -24,6 +26,8 @@ import { LoginComponent } from './auth/login/login.component';
 import { ManageComponent } from './manage/manage.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { SearchComponent } from './search/search.component';
+import { NewEmployeeComponent } from './employee/employee-add/new-employee.component';
+import { MatNativeDateModule } from '@angular/material/core';
 
 
 
@@ -35,7 +39,8 @@ import { SearchComponent } from './search/search.component';
     LoginComponent,
     ManageComponent,
     SignupComponent,
-    SearchComponent
+    SearchComponent,
+    NewEmployeeComponent
 
   ],
   imports: [
@@ -53,6 +58,8 @@ import { SearchComponent } from './search/search.component';
     MatIconModule,
     AppRoutingModule,
     MatTableModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
     ReactiveFormsModule
 
 

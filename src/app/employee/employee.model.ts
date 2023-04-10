@@ -1,8 +1,8 @@
 export interface Employee {
-
+    id: string;
+    tNumber:string;
     firstName:string;
     lastName:string;
-    tNumber:string;
     job:string;
     employmentStatus:string;
     employmentDates:string;
