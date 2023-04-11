@@ -42,10 +42,11 @@ h3 {
   max-height: 600px;
   overflow: auto;
   column-count: 2;
-  column-gap: 25px;
+  column-gap: 0px;
   background: none !important;
-  border: none !important;
+  border: black !important;
   width: auto;
+
 
 }
 
@@ -56,18 +57,19 @@ h3 {
   max-width: 600px;
   width: 100%;
   display: flex;
-  background: none !important;
+
 }
 
 .save-button {
   min-width: 75px;
   max-width: 250px;
   width: 100%;
-
+  margin-top: 20px;
+  margin-bottom: 20px;
   align-items: center;
   justify-content: center;
   display: flex;
-  background-color: #0b3a35 !important;
+
 }
 
 /* width */

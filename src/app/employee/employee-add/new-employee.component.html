@@ -1,6 +1,6 @@
 <div class="main-div-newEmp center-container-newEmp"> <h2 class=" header-footer">Employee Information</h2>
   <form (submit)="onSaveEmployee(newEmpForm)" #newEmpForm="ngForm" class="no-border">
-  <div class="main-div-newEmp scrollable no-border">
+  <div class="scrollable no-border">
 
 
       <mat-card class="center-container-newEmp">
@@ -120,7 +120,7 @@
 
 
   </div>
-  <button class="main-div-newEmp center-container-newEmp header-footer save-button" mat-raised-button
+  <button class="main-div-newEmp  header-footer save-button" mat-raised-button
   color="primary"
 
   [disabled]="!newEmpForm.valid"
