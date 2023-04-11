@@ -4,6 +4,7 @@ import { Employee } from "./employee.model";
 import { EmployeesService } from "./employees.service";
 import { MatTable } from "@angular/material/table";
 import { RouterLink } from "@angular/router";
+import { DatePipe, formatDate } from "@angular/common";
 
 
 @Component({
@@ -54,6 +55,11 @@ export class EmployeeComponent implements OnInit, OnDestroy {
 
   }
 
+  getFormatedDate(date: Date, format: string) {
+      const datePipe = new DatePipe('en-US');
+      return datePipe.transform(date,format);
+  }
+
   onDelete(employeeID: string) {
     this.employeesService.deleteEmployee(employeeID);
   }
@@ -63,4 +69,8 @@ export class EmployeeComponent implements OnInit, OnDestroy {
 
   }
 
+
+
 }
+
+

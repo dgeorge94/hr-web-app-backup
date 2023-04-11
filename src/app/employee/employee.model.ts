@@ -5,9 +5,9 @@ export interface Employee {
     lastName:string;
     job:string;
     employmentStatus:string;
-    employmentDates:string;
+    employmentDates:Date;
     salary:bigint;
-    DOB:string;
+    DOB:Date;
     SSN:string;
     // details?: details[] | MatTableDataSource<details>
 }

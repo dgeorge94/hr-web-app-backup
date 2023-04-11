@@ -14,8 +14,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatTableModule } from '@angular/material/table';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 
-
-
+import {ScrollingModule} from '@angular/cdk/scrolling';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -28,6 +27,7 @@ import { SignupComponent } from './auth/signup/signup.component';
 import { SearchComponent } from './search/search.component';
 import { NewEmployeeComponent } from './employee/employee-add/new-employee.component';
 import { MatNativeDateModule } from '@angular/material/core';
+import { Scroll } from '@angular/router';
 
 
 
@@ -60,7 +60,8 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatTableModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ScrollingModule
 
 
   ],

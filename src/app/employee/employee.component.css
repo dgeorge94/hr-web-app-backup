@@ -30,6 +30,13 @@ td {
 
 }
 
+.action-bar {
+  border: none;
+}
+
+.background {
+  background-color: #ffce2b;
+}
 .td-wide {
   width: 200px;
 }
@@ -38,4 +45,26 @@ h3 {
   color: #ffce2b;
 }
 
+.scrollable {
+  overflow: auto;
+  max-height: 80vh;
+}
 
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: none;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #0b3a35;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}

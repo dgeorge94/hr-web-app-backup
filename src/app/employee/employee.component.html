@@ -1,6 +1,7 @@
 
+
 <mat-card>
-  <mat-card-content>
+  <mat-card-content class="scrollable">
     <table class="header-table">
       <td class="td-wide"><h3>T-Number</h3></td>
       <td><h3>First Name</h3></td>
@@ -10,6 +11,7 @@
       <td ><h3>Employment Dates</h3></td>
       <td><h3>Salary</h3></td>
     </table>
+
     <mat-accordion multi="true" *ngIf="employees.length > 0">
       <mat-expansion-panel *ngFor="let emp of employees">
         <mat-expansion-panel-header>
@@ -18,21 +20,24 @@
           <td> {{ emp.firstName }} </td>
           <td> {{ emp.lastName }}  </td>
           <td> {{ emp.job }}  </td>
-          <td> {{ emp.employmentStatus }} </td>
-          <td> {{ emp.employmentDates }} - {{emp.employmentDates}} </td>
+          <td> {{ emp.employmentStatus}} </td>
+          <td> {{ emp.employmentDates | date:'MM/dd/yyyy'}} - {{emp.employmentDates | date:'MM/dd/yyyy'}} </td>
           <td> ${{ emp.salary }}</td>
         </table>
         </mat-expansion-panel-header>
         <table>
-        <td>DOB: {{ emp.DOB }}</td>
+        <td>DOB: {{ emp.DOB | date:'MM/dd/yyyy'}}</td>
         <td>SSN: {{ emp.SSN }} </td>
         </table>
-        <mat-action-row>
-         <a mat-button [routerLink]="['/manage', emp.id]" color="accent">MANAGE</a>
+        <mat-action-row class="action-bar">
+        <a mat-button [routerLink]="['/manage', emp.id]" color="accent">MANAGE</a>
           <button mat-button color="warn" (click)="onDelete(emp.id)">DELETE</button>
         </mat-action-row>
       </mat-expansion-panel>
     </mat-accordion>
+
     <p class="info-text mat-body-1" *ngIf="employees.length <= 0">No Results Found</p>
   </mat-card-content>
 </mat-card>
+
+

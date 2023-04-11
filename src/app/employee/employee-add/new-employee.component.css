@@ -1,19 +1,91 @@
 mat-card {
   padding-top: 0em !important;
   margin-top: 0em !important;
+  border: none !important;
+  background: none !important;
 
 }
 mat-form  {
   padding-top: 0em;
   margin-top: 0em;
+  background: none !important;
+  border: none !important;
+  margin-bottom: 5px !important;
+
 
 }
 mat-form-field {
   padding: 0em;
-  margin-top: 0em;
+  margin-top: 5px;
+  border: none !important;
+  max-width: 425px;
 }
 
 h3 {
   color: #ffce2b;
 }
 
+.no-border {
+  border: none !important;
+  background: none !important;
+
+}
+
+.form-input{
+  min-width: 250px;
+  max-width: 500px;
+  width: 100%;
+  padding: 15px;
+}
+
+.scrollable {
+  max-height: 600px;
+  overflow: auto;
+  column-count: 2;
+  column-gap: 25px;
+  background: none !important;
+  border: none !important;
+  width: auto;
+
+}
+
+.header-footer {
+  justify-content: center;
+  align-items: center;
+  min-width: 75px;
+  max-width: 600px;
+  width: 100%;
+  display: flex;
+  background: none !important;
+}
+
+.save-button {
+  min-width: 75px;
+  max-width: 250px;
+  width: 100%;
+
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  background-color: #0b3a35 !important;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: none;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #0b3a35;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}

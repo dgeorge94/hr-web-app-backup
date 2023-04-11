@@ -283,8 +283,8 @@ body {
   height: 40%;
   align-items: center;
   flex-direction: column;
-
-}
+  border: none !important;
+ }
 
 .main-div{
   height: 40%;
@@ -325,14 +325,17 @@ body {
 
 .main-div-newEmp {
   height: 60.05%;
-  width: 530px;
+  width: 70%;
+  max-width: 900px;
+
   box-shadow: 0 5px 30px 10px rgba(0, 0, 0, 0.4); /* left-to-right shadow, top-to-bottom shadow, blur, spread, color (rgba alpha value = opacity) */
   border-radius: 10px;
   justify-content: center;
   align-items: center;
   margin: auto;
   margin-top: 0.2%;
-  border: none;
+  border: none !important;
+
   // columns: 2 auto;
 }
 
