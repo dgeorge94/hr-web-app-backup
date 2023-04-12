@@ -5,6 +5,8 @@ import { EmployeesService } from "./employees.service";
 import { MatTable } from "@angular/material/table";
 import { RouterLink } from "@angular/router";
 import { DatePipe, formatDate } from "@angular/common";
+import { NgForm } from "@angular/forms";
+import { SearchByFirstName } from "./search-by-first-name.pipe";
 
 
 @Component({
@@ -14,6 +16,14 @@ import { DatePipe, formatDate } from "@angular/common";
 })
 
 export class EmployeeComponent implements OnInit, OnDestroy {
+
+  searchFirstNameText = '';
+  searchLastNameText = '';
+  searchtNumberText = '';
+  searchJobText = '';
+  searchEmpStatusText = '';
+  searchText = '';
+  isSearched = false;
 
 
 
@@ -46,6 +56,12 @@ export class EmployeeComponent implements OnInit, OnDestroy {
 
   constructor(public employeesService: EmployeesService) {}
 
+  getFormatedDate(date: Date, format: string) {
+    const datePipe = new DatePipe('en-US');
+    return datePipe.transform(date,format);
+}
+
+
   ngOnInit() {
     this.employeesService.getEmployees();
     this.employeesSub = this.employeesService.getEmployeeUpdateListener()
@@ -55,9 +71,24 @@ export class EmployeeComponent implements OnInit, OnDestroy {
 
   }
 
-  getFormatedDate(date: Date, format: string) {
-      const datePipe = new DatePipe('en-US');
-      return datePipe.transform(date,format);
+  onSearch(form: NgForm) {
+   this.isSearched = true;
+    console.log(form.value);
+
+    // this.employeesService.searchEmployees(form.value.firstName)
+
+  }
+
+  onClear(form: NgForm) {
+  this.searchFirstNameText = '';
+  this.searchLastNameText = '';
+  this.searchtNumberText = '';
+  this.searchJobText = '';
+  this.searchEmpStatusText = '';
+  this.searchText = '';
+
+
+  this.isSearched = false;
   }
 
   onDelete(employeeID: string) {

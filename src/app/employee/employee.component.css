@@ -14,12 +14,38 @@ table {
 
 }
 
+.expansion {
+  background-color: #0b3a35cb;
+}
+
 .header-table {
   border-spacing: 1em 0.5em;
   padding: 0 2em 1em 0;
 
   margin-left: 5.3em;
   font-family:Arial, Helvetica, sans-serif;
+}
+
+.search-bar {
+  border-spacing: 1em 0.5em;
+  margin-left: 4em;
+  font-family:Arial, Helvetica, sans-serif;
+}
+
+.buttons {
+margin-right: 20px !important;
+margin-left: 20px;
+display: flex;
+}
+
+h2 {
+  color: #ffce2b;
+  margin-top: 5px;
+}
+
+mat-form-field {
+  margin-left: 20px;
+  width: 15%;
 }
 
 td {

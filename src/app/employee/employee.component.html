@@ -1,6 +1,35 @@
-
-
 <mat-card>
+
+  <h2 class="center">EMPLOYEE RECORDS</h2>
+  <div class="navbar-form search-bar">
+    <form (submit)="onSearch(searchForm)" #searchForm="ngForm"> <!--TODO form.value == firstName-->
+    <div class="form-group">
+      <h3>Search By:</h3>
+      <mat-form-field><input (keyup.enter)="onSearch(searchForm)" matInput type="text" class="form-control" name="firstName" id="firstName"
+                      placeholder="First Name" [(ngModel)]="searchFirstNameText" #firstName="ngModel"></mat-form-field>
+      <mat-form-field><input (keyup.enter)="onSearch(searchForm)" matInput type="text" class="form-control" name="lastName"
+                      placeholder="Last Name" [(ngModel)]="searchLastNameText"></mat-form-field>
+      <mat-form-field><input (keyup.enter)="onSearch(searchForm)" matInput type="text" class="form-control" name="tNumber"
+                      placeholder="T-Number" [(ngModel)]="searchtNumberText"></mat-form-field>
+      <mat-form-field><input (keyup.enter)="onSearch(searchForm)" matInput type="text" class="form-control" name="job"
+                      placeholder="Job/Assignment" [(ngModel)]="searchJobText"></mat-form-field>
+      <mat-form-field><input (keyup.enter)="onSearch(searchForm)" matInput type="text" class="form-control" name="employmentStatus"
+                      placeholder="Employment Status" [(ngModel)]="searchEmpStatusText"></mat-form-field>
+    </div>
+    <div class="buttons">
+    <button class="login-button buttons" type="button" (click)="onSearch(searchForm)" mat-raised-button color="primary">Search</button>
+    <button class="login-button buttons" type="button" (click)="onClear(searchForm)" mat-raised-button color="accent">Clear</button>
+    </div>
+  </form>
+  </div>
+
+</mat-card>
+<mat-card *ngIf="isSearched && (searchFirstNameText !==''
+                                || searchLastNameText !==''
+                                || searchtNumberText !==''
+                                || searchJobText !== ''
+                                || searchEmpStatusText !== '')">
+
   <mat-card-content class="scrollable">
     <table class="header-table">
       <td class="td-wide"><h3>T-Number</h3></td>
@@ -12,11 +41,19 @@
       <td><h3>Salary</h3></td>
     </table>
 
+
+
     <mat-accordion multi="true" *ngIf="employees.length > 0">
-      <mat-expansion-panel *ngFor="let emp of employees">
+      <mat-expansion-panel *ngFor="let emp of (employees
+                                              | searchByFirstName: searchFirstNameText.toUpperCase()
+                                              | searchByLastName: searchLastNameText.toUpperCase()
+                                              | searchBytNumber: searchtNumberText.toUpperCase())
+                                              | searchByJob: searchJobText.toUpperCase()
+                                              | searchByEmploymentStatus : searchEmpStatusText.toUpperCase()">
+
         <mat-expansion-panel-header>
           <table>
-          <td> {{emp.tNumber}} </td>
+          <td> {{ emp.tNumber }} </td>
           <td> {{ emp.firstName }} </td>
           <td> {{ emp.lastName }}  </td>
           <td> {{ emp.job }}  </td>

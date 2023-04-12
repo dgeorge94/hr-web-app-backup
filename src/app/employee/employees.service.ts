@@ -1,12 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { debounce, Subject } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { first, map } from 'rxjs/operators';
+import { SearchByFirstName } from './search-by-first-name.pipe';
 
 import { Employee } from './employee.model';
+import { NgForm } from '@angular/forms';
 
 @Injectable({providedIn: 'root'})
-export class EmployeesService {
+export class EmployeesService{
   private employees: Employee[] = [];
   private employeesUpdated = new Subject<Employee[]>();
 
@@ -36,29 +38,6 @@ export class EmployeesService {
       });
   }
 
-  searchEmployees(firstName: string, lastName: string, tNumber: string) {
-    this.http.get<{message: string, employees: any}> ('http://localhost:3000/api/employee')
-      .pipe(map((employeeData) => {
-        return employeeData.employees.map(employee => {
-          return {
-            tNumber: employee.tNumber,
-            firstName: employee.firstName,
-            lastName: employee.lastName,
-            job: employee.job,
-            employmentStatus: employee.employmentStatus,
-            employmentDates: employee.employmentDates,
-            salary: employee.salary,
-            DOB: employee.DOB,
-            SSN: employee.SSN,
-            id: employee._id
-          }
-        });
-      }))
-      .subscribe((transformedEmployees) => {
-        this.employees = transformedEmployees;
-        this.employeesUpdated.next([...this.employees]);
-      });
-  }
 
   getEmployeeUpdateListener() {
     return this.employeesUpdated.asObservable();
@@ -82,7 +61,7 @@ export class EmployeesService {
     salary:bigint,
     DOB:Date,
     SSN:string) {
-    const employee: Employee = { id: null, tNumber: tNumber.toUpperCase(), firstName: firstName, lastName: lastName, job: job,
+    const employee: Employee = { id: null, tNumber: tNumber.toUpperCase(), firstName: firstName.toUpperCase(), lastName: lastName.toUpperCase(), job: job.toUpperCase(),
                             employmentStatus: employmentStatus.toUpperCase(), employmentDates: employmentDates, salary: salary,
                             DOB: DOB, SSN: SSN };
     this.http.post<{message: string, employeeID: string}>('http://localhost:3000/api/employee', employee)
@@ -108,10 +87,10 @@ export class EmployeesService {
         const employee: Employee = {
           id: id,
           tNumber: tNumber.toUpperCase(),
-          firstName: firstName,
-          lastName: lastName,
-          job: job,
-          employmentStatus: employmentStatus.toUpperCase(),
+          firstName: firstName.toUpperCase(),
+          lastName: lastName.toUpperCase(),
+          job: job.toUpperCase(),
+          employmentStatus: employmentStatus,
           employmentDates: employmentDates,
           salary: salary,
           DOB: DOB,

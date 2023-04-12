@@ -22,12 +22,16 @@ import { AppRoutingModule } from './app-routing.module';
 import { HeaderComponent } from './header/header.component';
 import { EmployeeComponent } from './employee/employee.component';
 import { LoginComponent } from './auth/login/login.component';
-import { ManageComponent } from './manage/manage.component';
 import { SignupComponent } from './auth/signup/signup.component';
-import { SearchComponent } from './search/search.component';
 import { NewEmployeeComponent } from './employee/employee-add/new-employee.component';
 import { MatNativeDateModule } from '@angular/material/core';
 import { Scroll } from '@angular/router';
+import { SearchByFirstName } from './employee/search-by-first-name.pipe';
+import { SearchByLastName } from './employee/search-by-last-name.pipe';
+import { SearchBytNumber } from './employee/search-by-tnum.pipe';
+import { SearchByJob } from './employee/search-by-job.pipe';
+import { SearchByEmploymentStatus } from './employee/search-by-emp-status.pipe';
+
 
 
 
@@ -37,10 +41,13 @@ import { Scroll } from '@angular/router';
     HeaderComponent,
     EmployeeComponent,
     LoginComponent,
-    ManageComponent,
     SignupComponent,
-    SearchComponent,
-    NewEmployeeComponent
+    NewEmployeeComponent,
+    SearchByFirstName,
+    SearchByLastName,
+    SearchBytNumber,
+    SearchByJob,
+    SearchByEmploymentStatus
 
   ],
   imports: [

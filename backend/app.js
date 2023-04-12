@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 
 const Employee = require('./models/employee');
+const employee = require('./models/employee');
 
 const app = express();
 
@@ -98,5 +99,15 @@ app.delete('/api/employee/:id', (req, res, next) => {
   });
 
 });
+
+app.search('/api/employee', (req, res, next) => {
+  Employee.findOne(req.params.firstName, req.params.LastName, req.params.tNumber).then(employee =>{
+    if (employee) {
+      res.status(200).json(employee);
+    } else {
+      res.status(404).json({message: 'Employee Not Found'});
+    }
+  })
+})
 
 module.exports = app;

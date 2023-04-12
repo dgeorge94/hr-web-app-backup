@@ -34,10 +34,10 @@ export class NewEmployeeComponent implements OnInit{
         this.employeesService.getEmployee(this.postId).subscribe(postData => {
           this.post = {
             id:postData._id,
-            tNumber: postData.tNumber,
-            firstName: postData.firstName,
-            lastName: postData.lastName,
-            job: postData.job,
+            tNumber: postData.tNumber.toUpperCase(),
+            firstName: postData.firstName.toUpperCase(),
+            lastName: postData.lastName.toUpperCase(),
+            job: postData.job.toUpperCase(),
             employmentStatus: postData.employmentStatus,
             employmentDates: postData.employmentDates,
             salary: postData.salary,
@@ -58,10 +58,10 @@ export class NewEmployeeComponent implements OnInit{
     }
     if (this.mode ==='create') {
       this.employeesService.addEmployee(
-        form.value.tNumber,
-        form.value.firstName,
-        form.value.lastName,
-        form.value.job,
+        form.value.tNumber.toUpperCase(),
+        form.value.firstName.toUpperCase(),
+        form.value.lastName.toUpperCase(),
+        form.value.job.toUpperCase(),
         this.enteredEmploymentStatus,
         form.value.employmentDates,
         form.value.salary,
@@ -70,11 +70,11 @@ export class NewEmployeeComponent implements OnInit{
     } else {
       this.employeesService.updateEmployee(
         this.postId,
-        form.value.tNumber,
-        form.value.firstName,
-        form.value.lastName,
-        form.value.job,
-        this.enteredEmploymentStatus,
+        form.value.tNumber.toUpperCase(),
+        form.value.firstName.toUpperCase(),
+        form.value.lastName.toUpperCase(),
+        form.value.job.toUpperCase(),
+        form.value.EmploymentStatus,
         form.value.employmentDates,
         form.value.salary,
         form.value.DOB,
