@@ -1,20 +1,23 @@
+
+
+
 <mat-card>
 
   <h2 class="center">EMPLOYEE RECORDS</h2>
   <div class="navbar-form search-bar">
-    <form (submit)="onSearch(searchForm)" #searchForm="ngForm"> <!--TODO form.value == firstName-->
+    <form (submit)="onSearch(searchForm)" #searchForm="ngForm">
     <div class="form-group">
       <h3>Search By:</h3>
       <mat-form-field><input (keyup.enter)="onSearch(searchForm)" matInput type="text" class="form-control" name="firstName" id="firstName"
-                      placeholder="First Name" [(ngModel)]="searchFirstNameText" #firstName="ngModel"></mat-form-field>
+                      autocomplete="off" placeholder="First Name" [(ngModel)]="searchFirstNameText" #firstName="ngModel"></mat-form-field>
       <mat-form-field><input (keyup.enter)="onSearch(searchForm)" matInput type="text" class="form-control" name="lastName"
-                      placeholder="Last Name" [(ngModel)]="searchLastNameText"></mat-form-field>
+                      autocomplete="off" placeholder="Last Name" [(ngModel)]="searchLastNameText"></mat-form-field>
       <mat-form-field><input (keyup.enter)="onSearch(searchForm)" matInput type="text" class="form-control" name="tNumber"
-                      placeholder="T-Number" [(ngModel)]="searchtNumberText"></mat-form-field>
+                      autocomplete="off" placeholder="T-Number" [(ngModel)]="searchtNumberText"></mat-form-field>
       <mat-form-field><input (keyup.enter)="onSearch(searchForm)" matInput type="text" class="form-control" name="job"
-                      placeholder="Job/Assignment" [(ngModel)]="searchJobText"></mat-form-field>
+                      autocomplete="off" placeholder="Job/Assignment" [(ngModel)]="searchJobText"></mat-form-field>
       <mat-form-field><input (keyup.enter)="onSearch(searchForm)" matInput type="text" class="form-control" name="employmentStatus"
-                      placeholder="Employment Status" [(ngModel)]="searchEmpStatusText"></mat-form-field>
+                      autocomplete="off" placeholder="Employment Status" [(ngModel)]="searchEmpStatusText"></mat-form-field>
     </div>
     <div class="buttons">
     <button class="login-button buttons" type="button" (click)="onSearch(searchForm)" mat-raised-button color="primary">Search</button>
@@ -76,5 +79,6 @@
     <p class="info-text mat-body-1" *ngIf="employees.length <= 0">No Results Found</p>
   </mat-card-content>
 </mat-card>
+
 
 
