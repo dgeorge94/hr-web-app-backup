@@ -10,14 +10,15 @@
                       type="email"
                       id="email"
                       placeholder="user1@atu.edu"
-                      ngModel
+                   
                       name="email"
+                      ngModel
                       required
                       email
                       autocomplete="off"
                       #emailInput="ngModel">
                       <span class="help-block"
-                            *ngIf="!emailInput.valid && emailInput.touched" >
+                            *ngIf="emailInput.invalid && emailInput.touched" >
                             Please enter a valid email
                       </span>
               </mat-form-field>
@@ -25,15 +26,17 @@
                   <mat-label>Password</mat-label>
                   <input matInput
                       type="password"
+                      
                       id="password"
                       placeholder="Password"
-                      ngModel
+                      
                       name="password"
+                      ngModel
                       required
                       autocomplete="off"
                       #passwordInput="ngModel">
                       <span class="help-block"
-                            *ngIf="!passwordInput.valid && passwordInput.touched" >
+                            *ngIf="passwordInput.invalid && passwordInput.touched" >
                             Please enter a valid password
                       </span>
               </mat-form-field>

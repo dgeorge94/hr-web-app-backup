@@ -8,7 +8,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatExpansionModule } from '@angular/material/expansion';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTableModule } from '@angular/material/table';
@@ -31,6 +31,7 @@ import { SearchByLastName } from './employee/search-by-last-name.pipe';
 import { SearchBytNumber } from './employee/search-by-tnum.pipe';
 import { SearchByJob } from './employee/search-by-job.pipe';
 import { SearchByEmploymentStatus } from './employee/search-by-emp-status.pipe';
+import { AuthInterceptor } from './auth/auth-interceptor';
 
 
 
@@ -72,7 +73,7 @@ import { SearchByEmploymentStatus } from './employee/search-by-emp-status.pipe';
 
 
   ],
-  providers: [],
+  providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
