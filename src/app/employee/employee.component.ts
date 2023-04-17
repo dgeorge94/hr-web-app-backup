@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from "@angular/core";
 import { Subscription } from "rxjs";
 import { Employee } from "./employee.model";
 import { EmployeesService } from "./employees.service";
+import {AuthService} from "./../auth/auth.service"
 import { MatTable } from "@angular/material/table";
 import { RouterLink } from "@angular/router";
 import { DatePipe, formatDate } from "@angular/common";
@@ -53,8 +54,10 @@ export class EmployeeComponent implements OnInit, OnDestroy {
 
   employees: Employee[] = [];
   private employeesSub: Subscription;
+  private authStatusSub: Subscription;
+  userIsAuthenticated = false;
 
-  constructor(public employeesService: EmployeesService) {}
+  constructor(public employeesService: EmployeesService, private authService: AuthService) {}
 
   getFormatedDate(date: Date, format: string) {
     const datePipe = new DatePipe('en-US');
@@ -68,7 +71,10 @@ export class EmployeeComponent implements OnInit, OnDestroy {
       .subscribe((employees: Employee[]) => {
         this.employees = employees;
       });
-
+    this.userIsAuthenticated = this.authService.getIsAuth();
+    this.authStatusSub = this.authService.getAuthStatusListener().subscribe(isAuthenticated => {
+      this.userIsAuthenticated = isAuthenticated;
+    });
   }
 
   onSearch(form: NgForm) {
@@ -97,6 +103,7 @@ export class EmployeeComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.employeesSub.unsubscribe();
+    this.authStatusSub.unsubscribe();
 
   }
 

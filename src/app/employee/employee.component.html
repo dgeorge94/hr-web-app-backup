@@ -19,7 +19,7 @@
       <mat-form-field><input (keyup.enter)="onSearch(searchForm)" matInput type="text" class="form-control" name="employmentStatus"
                       autocomplete="off" placeholder="Employment Status" [(ngModel)]="searchEmpStatusText"></mat-form-field>
     </div>
-    <div class="buttons">
+    <div *ngIf="userIsAuthenticated" class="buttons">
     <button class="login-button buttons" type="button" (click)="onSearch(searchForm)" mat-raised-button color="primary">Search</button>
     <button class="login-button buttons" type="button" (click)="onClear(searchForm)" mat-raised-button color="accent">Clear</button>
     </div>
@@ -69,7 +69,7 @@
         <td>DOB: {{ emp.DOB | date:'MM/dd/yyyy'}}</td>
         <td>SSN: {{ emp.SSN }} </td>
         </table>
-        <mat-action-row class="action-bar">
+        <mat-action-row class="action-bar" *ngIf="userIsAuthenticated">
         <a mat-button [routerLink]="['/manage', emp.id]" color="accent">MANAGE</a>
           <button mat-button color="warn" (click)="onDelete(emp.id)">DELETE</button>
         </mat-action-row>

@@ -1,9 +1,10 @@
 <mat-menu #appMenu="matMenu">
   <ng-template matMenuContent>
-    <a routerLink="/login"><button mat-menu-item><h4 class="menu-item-h4">Login</h4></button></a>
-    <a routerLink="/employee"><button mat-menu-item><h4 class="menu-item-h4">Employee Database</h4></button></a>
-    <a routerLink="/add-employee"><button mat-menu-item><h4 class="menu-item-h4">Add New Employee</h4></button></a>
-    <a routerLink="/signup"><button mat-menu-item><h4 class="menu-item-h4">New HR User Registration</h4></button></a>
+    <a *ngIf="!userIsAuthenticated" routerLink="/login"><button mat-menu-item><h4 class="menu-item-h4">Login</h4></button></a>
+    <a *ngIf="userIsAuthenticated" routerLink="/employee"><button mat-menu-item><h4 class="menu-item-h4">Employee Database</h4></button></a>
+    <a *ngIf="userIsAuthenticated" routerLink="/add-employee"><button mat-menu-item><h4 class="menu-item-h4">Add New Employee</h4></button></a>
+    <a *ngIf="!userIsAuthenticated" routerLink="/signup"><button mat-menu-item><h4 class="menu-item-h4">New HR User Registration</h4></button></a>
+    <button *ngIf="userIsAuthenticated" mat-button (click)="onLogout()">Logout</button>
   </ng-template>
 </mat-menu>
 
