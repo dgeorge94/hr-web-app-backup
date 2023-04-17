@@ -8,18 +8,23 @@
     <form (submit)="onSearch(searchForm)" #searchForm="ngForm">
     <div class="form-group">
       <h3>Search By:</h3>
-      <mat-form-field><input (keyup.enter)="onSearch(searchForm)" matInput type="text" class="form-control" name="firstName" id="firstName"
+      <mat-form-field><input (keyup.enter)="onSearch(searchForm)" (keyup.esc)="onClear(searchForm)"
+                      matInput type="text" class="form-control" name="firstName" id="firstName"
                       autocomplete="off" placeholder="First Name" [(ngModel)]="searchFirstNameText" #firstName="ngModel"></mat-form-field>
-      <mat-form-field><input (keyup.enter)="onSearch(searchForm)" matInput type="text" class="form-control" name="lastName"
+      <mat-form-field><input (keyup.enter)="onSearch(searchForm)" (keyup.esc)="onClear(searchForm)"
+                      matInput type="text" class="form-control" name="lastName"
                       autocomplete="off" placeholder="Last Name" [(ngModel)]="searchLastNameText"></mat-form-field>
-      <mat-form-field><input (keyup.enter)="onSearch(searchForm)" matInput type="text" class="form-control" name="tNumber"
+      <mat-form-field><input (keyup.enter)="onSearch(searchForm)" (keyup.esc)="onClear(searchForm)"
+                      matInput type="text" class="form-control" name="tNumber"
                       autocomplete="off" placeholder="T-Number" [(ngModel)]="searchtNumberText"></mat-form-field>
-      <mat-form-field><input (keyup.enter)="onSearch(searchForm)" matInput type="text" class="form-control" name="job"
+      <mat-form-field><input (keyup.enter)="onSearch(searchForm)" (keyup.esc)="onClear(searchForm)"
+                      matInput type="text" class="form-control" name="job"
                       autocomplete="off" placeholder="Job/Assignment" [(ngModel)]="searchJobText"></mat-form-field>
-      <mat-form-field><input (keyup.enter)="onSearch(searchForm)" matInput type="text" class="form-control" name="employmentStatus"
+      <mat-form-field><input (keyup.enter)="onSearch(searchForm)" (keyup.esc)="onClear(searchForm)"
+                      matInput type="text" class="form-control" name="employmentStatus"
                       autocomplete="off" placeholder="Employment Status" [(ngModel)]="searchEmpStatusText"></mat-form-field>
     </div>
-    <div *ngIf="userIsAuthenticated" class="buttons">
+    <div class="buttons">
     <button class="login-button buttons" type="button" (click)="onSearch(searchForm)" mat-raised-button color="primary">Search</button>
     <button class="login-button buttons" type="button" (click)="onClear(searchForm)" mat-raised-button color="accent">Clear</button>
     </div>
@@ -61,15 +66,23 @@
           <td> {{ emp.lastName }}  </td>
           <td> {{ emp.job }}  </td>
           <td> {{ emp.employmentStatus}} </td>
-          <td> {{ emp.employmentDates | date:'MM/dd/yyyy'}} - {{emp.employmentDates | date:'MM/dd/yyyy'}} </td>
+          <td> {{ emp.employmentStartDate | date:'MM/dd/yyyy'}} - {{emp.employmentTerminationDate | date:'MM/dd/yyyy'}} </td>
           <td> ${{ emp.salary }}</td>
         </table>
         </mat-expansion-panel-header>
         <table>
-        <td>DOB: {{ emp.DOB | date:'MM/dd/yyyy'}}</td>
-        <td>SSN: {{ emp.SSN }} </td>
+        <td><h3>DOB:</h3> &nbsp;    {{ emp.DOB | date:'MM/dd/yyyy'}}</td>
+        <td><h3>SSN:</h3> &nbsp; {{ emp.SSN }} </td>
+        <td><div class="inside-div"><h3>Salary Breakdown</h3>
+          <div class="">
+         <h4>Total Salary: </h4>  ${{emp.salary}} &nbsp;
+          <h4>Contract Length (months): </h4>  {{ emp.contractLength }} &nbsp;
+          <h4>Monthly Payments: </h4> ${{ emp.salary / emp.contractLength}}
+        </div>
+        </div></td>
+
         </table>
-        <mat-action-row class="action-bar" *ngIf="userIsAuthenticated">
+        <mat-action-row class="action-bar">
         <a mat-button [routerLink]="['/manage', emp.id]" color="accent">MANAGE</a>
           <button mat-button color="warn" (click)="onDelete(emp.id)">DELETE</button>
         </mat-action-row>

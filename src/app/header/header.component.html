@@ -3,8 +3,7 @@
     <a *ngIf="!userIsAuthenticated" routerLink="/login"><button mat-menu-item><h4 class="menu-item-h4">Login</h4></button></a>
     <a *ngIf="userIsAuthenticated" routerLink="/employee"><button mat-menu-item><h4 class="menu-item-h4">Employee Database</h4></button></a>
     <a *ngIf="userIsAuthenticated" routerLink="/add-employee"><button mat-menu-item><h4 class="menu-item-h4">Add New Employee</h4></button></a>
-    <a *ngIf="!userIsAuthenticated" routerLink="/signup"><button mat-menu-item><h4 class="menu-item-h4">New HR User Registration</h4></button></a>
-    <button *ngIf="userIsAuthenticated" mat-button (click)="onLogout()">Logout</button>
+    <a routerLink="/signup"><button mat-menu-item><h4 class="menu-item-h4">New HR User Registration</h4></button></a>
   </ng-template>
 </mat-menu>
 
@@ -15,8 +14,9 @@
     </button>
     <mat-card-title>
     <h1>Arkansas Tech University</h1>
-
     <mat-card-subtitle>Human Resources</mat-card-subtitle>
   </mat-card-title>
+  <span class="spacer"></span>
+  <button *ngIf="userIsAuthenticated" mat-button (click)="onLogout()" ><h4 class="menu-item-h4">Logout</h4></button>
   </mat-toolbar-row>
 </mat-toolbar>

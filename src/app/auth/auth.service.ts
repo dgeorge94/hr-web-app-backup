@@ -24,15 +24,17 @@ export class AuthService{
     return this.authStatusListener.asObservable();
   }
 
-  createUser(userFName: string, userLName: string, email: string, password:string){
-    const authData: AuthData = {userFName: userFName, userLName: userLName, email: email, password: password};
-    this.http.post("http://localhost:3000/api/user/signup", authData).subscribe(response => {
-      console.log(response);
-    });
+  createUser(email: string, password: string) {
+    const authData: AuthData = {email: email, password: password};
+    this.http.post('http://localhost:3000/api/user/signup', authData)
+    .subscribe(response => {
+      console.log(response)
+      this.router.navigate(['/login']);
+    })
   }
 
   login(userFName: string, userLName: string, email: string, password: string){
-    const authData: AuthData = {userFName: userFName, userLName: userLName, email: email, password: password};
+    const authData: AuthData = {email: email, password: password};
     this.http.post<{token: string, expiresIn: number}>("http://localhost:3000/api/user/login", authData).subscribe(response => {
       const token = response.token;
       this.token = token;

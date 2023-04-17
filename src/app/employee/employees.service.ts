@@ -11,6 +11,7 @@ import { NgForm } from '@angular/forms';
 export class EmployeesService{
   private employees: Employee[] = [];
   private employeesUpdated = new Subject<Employee[]>();
+  empStatus = ''
 
   constructor(private http: HttpClient) {}
 
@@ -24,10 +25,12 @@ export class EmployeesService{
             lastName: employee.lastName,
             job: employee.job,
             employmentStatus: employee.employmentStatus,
-            employmentDates: employee.employmentDates,
+            employmentStartDate: employee.employmentStartDate,
+            employmentTerminationDate: employee.employmentTerminationDate,
             salary: employee.salary,
             DOB: employee.DOB,
             SSN: employee.SSN,
+            contractLength: employee.contractLength,
             id: employee._id
           }
         });
@@ -47,7 +50,7 @@ export class EmployeesService{
     return this.http.get<{
       _id: string, tNumber: string, firstName: string,
       lastName: string, job: string, employmentStatus: string,
-      employmentDates: Date, salary: bigint, DOB: Date, SSN: string  }>('http://localhost:3000/api/employee/' + id);
+      employmentStartDate: Date, employmentTerminationDate: Date, salary: bigint, DOB: Date, SSN: string, contractLength: number  }>('http://localhost:3000/api/employee/' + id);
   }
 
 
@@ -57,13 +60,17 @@ export class EmployeesService{
     lastName:string,
     job:string,
     employmentStatus:string,
-    employmentDates:Date,
+    employmentStartDate: Date,
+    employmentTerminationDate: Date,
     salary:bigint,
     DOB:Date,
-    SSN:string) {
+    SSN:string,
+    contractLength:number) {
+
+
     const employee: Employee = { id: null, tNumber: tNumber.toUpperCase(), firstName: firstName.toUpperCase(), lastName: lastName.toUpperCase(), job: job.toUpperCase(),
-                            employmentStatus: employmentStatus.toUpperCase(), employmentDates: employmentDates, salary: salary,
-                            DOB: DOB, SSN: SSN };
+                            employmentStatus: employmentStatus.toUpperCase(), employmentStartDate: employmentStartDate, employmentTerminationDate: employmentTerminationDate, salary: salary,
+                            DOB: DOB, SSN: SSN, contractLength: contractLength };
     this.http.post<{message: string, employeeID: string}>('http://localhost:3000/api/employee', employee)
       .subscribe((responseData) => {
         const id = responseData.employeeID;
@@ -80,10 +87,13 @@ export class EmployeesService{
       lastName:string,
       job:string,
       employmentStatus:string,
-      employmentDates:Date,
+      employmentStartDate: Date,
+      employmentTerminationDate: Date,
       salary:bigint,
       DOB:Date,
-      SSN:string ) {
+      SSN:string,
+      contractLength:number ) {
+
         const employee: Employee = {
           id: id,
           tNumber: tNumber.toUpperCase(),
@@ -91,11 +101,15 @@ export class EmployeesService{
           lastName: lastName.toUpperCase(),
           job: job.toUpperCase(),
           employmentStatus: employmentStatus,
-          employmentDates: employmentDates,
+          employmentStartDate: employmentStartDate,
+          employmentTerminationDate: employmentTerminationDate,
           salary: salary,
           DOB: DOB,
-          SSN: SSN
+          SSN: SSN,
+          contractLength: contractLength
           };
+
+
           this.http.put('http://localhost:3000/api/employee/' + id, employee)
             .subscribe(response =>{
               const updatedEmployees = [...this.employees];

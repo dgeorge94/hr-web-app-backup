@@ -2,6 +2,19 @@
   display: block;
 }
 
+.inside-div {
+  align-items: center;
+  justify-content: center;
+  width: 400%;
+  text-align: center;
+
+}
+
+.spacer {
+  flex: 5 5 auto;
+}
+
+
 .info-text {
   text-align: center;
 }
@@ -12,6 +25,14 @@ table {
 
   margin-left: 5em;
 
+}
+
+.inline {
+  display: inline;
+}
+
+h4 {
+  display: inline;
 }
 
 .expansion {
