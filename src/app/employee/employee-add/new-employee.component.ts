@@ -14,7 +14,7 @@ export class NewEmployeeComponent implements OnInit{
   enteredFirstName = "";
   enteredLasstName = "";
   enteredJob = "";
-  enteredEmploymentStatus = "Active";
+  enteredEmploymentStatus = "";
   enteredEmployementDate = "";
   enteredSalary = 0;
   enteredDOB = "";
@@ -39,11 +39,14 @@ export class NewEmployeeComponent implements OnInit{
             lastName: postData.lastName.toUpperCase(),
             job: postData.job.toUpperCase(),
             employmentStatus: postData.employmentStatus,
-            employmentDates: postData.employmentDates,
+            employmentStartDate: postData.employmentStartDate,
+            employmentTerminationDate: postData.employmentTerminationDate,
             salary: postData.salary,
             DOB: postData.DOB,
-            SSN: postData.SSN
+            SSN: postData.SSN,
+            contractLength: postData.contractLength
           }
+
         });
       } else {
         this.mode = "create";
@@ -53,33 +56,51 @@ export class NewEmployeeComponent implements OnInit{
   }
 
   onSaveEmployee(form: NgForm) {
+    let termination = form.value.employmentTerminationDate;
+
     if (form.invalid) {
       return;
     }
+    if(termination === null) {
+      this.enteredEmploymentStatus = "Active";
+    } else {
+      this.enteredEmploymentStatus = "Terminated";
+    }
     if (this.mode ==='create') {
+
+
       this.employeesService.addEmployee(
         form.value.tNumber.toUpperCase(),
         form.value.firstName.toUpperCase(),
         form.value.lastName.toUpperCase(),
         form.value.job.toUpperCase(),
         this.enteredEmploymentStatus,
-        form.value.employmentDates,
+        form.value.employmentStartDate,
+        form.value.employmentTerminationDate,
         form.value.salary,
         form.value.DOB,
-        form.value.SSN);
+        form.value.SSN,
+        form.value.contractLength);
     } else {
+
+
       this.employeesService.updateEmployee(
         this.postId,
         form.value.tNumber.toUpperCase(),
         form.value.firstName.toUpperCase(),
         form.value.lastName.toUpperCase(),
         form.value.job.toUpperCase(),
-        form.value.EmploymentStatus,
-        form.value.employmentDates,
+        this.enteredEmploymentStatus,
+        form.value.employmentStartDate,
+        form.value.employmentTerminationDate,
         form.value.salary,
         form.value.DOB,
-        form.value.SSN )
+        form.value.SSN,
+        form.value.contractLength)
     }
+
+
+
 
       form.resetForm();
   }

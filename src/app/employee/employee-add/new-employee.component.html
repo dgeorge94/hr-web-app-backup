@@ -43,6 +43,36 @@
             </mat-form-field>
 
             <mat-form-field class="example-form">
+              <mat-label>Date of Birth</mat-label>
+              <input matInput [matDatepicker] = "birthDatepicker"
+
+              id="DOB"
+              placeholder="MM/DD/YYYY"
+              name="DOB"
+              required
+              [ngModel]="post?.DOB"
+              #employmentDateInput="ngModel"
+              autocomplete="off">
+              <mat-datepicker-toggle matIconSuffix [for]="birthDatepicker"></mat-datepicker-toggle>
+              <mat-datepicker #birthDatepicker></mat-datepicker>
+          </mat-form-field>
+
+          <mat-form-field class="example-form">
+            <mat-label>SSN</mat-label>
+            <input matInput
+                  type="text"
+                  id="SSN"
+                  placeholder="SSN"
+                  name="SSN"
+                  required
+                  [ngModel]="post?.SSN"
+                  #SSNInput="ngModel"
+                  autocomplete="off"
+                  maxlength=9
+                  unique>
+        </mat-form-field>
+
+            <mat-form-field class="example-form">
                 <mat-label>Job Title</mat-label>
                 <input matInput
                       type="text"
@@ -54,64 +84,66 @@
                       #jobInput="ngModel"
                       autocomplete="off">
             </mat-form-field>
+
+
             <mat-form-field class="example-form">
                 <mat-label>Hire Date</mat-label>
-                <input matInput [matDatepicker] = "picker"
+                <input matInput [matDatepicker] = "startDatePicker"
                       type="text"
-                      id="employmentDates"
+                      id="employmentStartDate"
                       placeholder="MM/DD/YYYY"
-                      name="employmentDates"
+                      name="employmentStartDate"
                       required
-                      [ngModel]="post?.employmentDates"
-                      #employmentDateInput="ngModel"
+                      [ngModel]="post?.employmentStartDate"
+                      #employmentStartDateInput="ngModel"
                       autocomplete="off">
-                      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-                      <mat-datepicker #picker></mat-datepicker>
+                      <mat-datepicker-toggle matIconSuffix [for]="startDatePicker"></mat-datepicker-toggle>
+                      <mat-datepicker #startDatePicker></mat-datepicker>
             </mat-form-field>
 
+            <mat-form-field class="example-form">
+              <mat-label>Termination Date</mat-label>
+              <input matInput [matDatepicker] = "terminationDatePicker"
+                    type="text"
+                    id="employmentTerminationDate"
+                    placeholder="MM/DD/YYYY"
+                    name="employmentTerminationDate"
 
-          <mat-form-field class="example-form">
-            <mat-label>Salary</mat-label>
-            <input matInput
-                  type="number"
-                  id="salary"
-                  placeholder="Salary"
-                  name="salary"
-                  required
-                  [ngModel]="post?.salary"
-                  #salaryInput="ngModel"
-                  autocomplete="off">
-        </mat-form-field>
+                    [ngModel]="post?.employmentTerminationDate"
+                    #employmentTerminationDateInput="ngModel"
+                    autocomplete="off">
+                    <mat-datepicker-toggle matIconSuffix [for]="terminationDatePicker"></mat-datepicker-toggle>
+                    <mat-datepicker #terminationDatePicker></mat-datepicker>
+          </mat-form-field>
+
+
+
 
         <mat-form-field class="example-form">
-          <mat-label>Date of Birth</mat-label>
-          <input matInput [matDatepicker] = "birthDatepicker"
-          type="text"
-          id="DOB"
-          placeholder="MM/DD/YYYY"
-          name="DOB"
-          required
-          [ngModel]="post?.DOB"
-          #employmentDateInput="ngModel"
-          autocomplete="off">
-          <mat-datepicker-toggle matIconSuffix [for]="birthDatepicker"></mat-datepicker-toggle>
-          <mat-datepicker #birthDatepicker></mat-datepicker>
+          <mat-label>Salary</mat-label>
+          <input matInput
+                type="number"
+                id="salary"
+                placeholder="Salary"
+                name="salary"
+                required
+                [ngModel]="post?.salary"
+                #salaryInput="ngModel"
+                autocomplete="off">
       </mat-form-field>
 
-      <mat-form-field class="example-form">
-        <mat-label>SSN</mat-label>
-        <input matInput
-              type="text"
-              id="SSN"
-              placeholder="SSN"
-              name="SSN"
-              required
-              [ngModel]="post?.SSN"
-              #SSNInput="ngModel"
-              autocomplete="off">
-    </mat-form-field>
-
-
+        <mat-form-field class="example-form">
+          <mat-label>Contract Length (months)</mat-label>
+          <input matInput
+                type="number"
+                id="contractLength"
+                placeholder="Contract Length"
+                name="contractLength"
+                required
+                [ngModel]="post?.contractLength"
+                #contractLengthInput="ngModel"
+                autocomplete="off">
+      </mat-form-field>
 
 
 

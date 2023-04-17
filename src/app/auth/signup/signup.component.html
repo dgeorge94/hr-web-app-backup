@@ -1,36 +1,13 @@
-
-<div class="main-div-register">
-  <form (submit)="onSignup(signupForm)" #signupForm="ngForm">
-    <mat-card class="center-container-register">
+<div class="main-div">
+  <form (submit)="onSignup(signupForm)" #signupForm="ngForm" autocomplete="off">
+    <mat-card class="center-container">
 
       <mat-card-header>
 
           <h2>New User Registration</h2>
 
       </mat-card-header>
-          <mat-form-field class="example-form">
-              <mat-label>First Name</mat-label>
-              <input matInput
-                     type="text"
-                     id="userFName"
-                     name="userFName"
-                     required
-                     ngModel
-                     #fNameInput="ngModel"
-                     autocomplete="off">
-          </mat-form-field>
 
-          <mat-form-field class="example-form">
-              <mat-label>Last Name</mat-label>
-              <input matInput
-                     type="text"
-                     id="userLName"
-                     name="userLName"
-                     required
-                     ngModel
-                     #lNameInput="ngModel"
-                     autocomplete="off">
-          </mat-form-field>
 
           <mat-form-field class="example-form">
               <mat-label>Email</mat-label>
@@ -42,8 +19,8 @@
                      name="email"
                      required
                      ngModel
-                     #emailInput="ngModel"
-                     autocomplete="off">
+                     autocomplete="off"
+                     #emailInput="ngModel">
                 <span class="help-block"
                       *ngIf="!emailInput.valid && emailInput.touched" >
                       Please enter a valid email
@@ -53,14 +30,14 @@
               <mat-label>Password</mat-label>
 
               <input matInput
-                     type="text"
+                     type="password"
                      id="password"
                      placeholder="Password"
                      name="password"
                      required
                      ngModel
-                     #passwordInput="ngModel"
-                     autocomplete="off">
+                     autocomplete="off"
+                     #passwordInput="ngModel">
                 <span class="help-block"
                       *ngIf="!passwordInput.valid && passwordInput.touched" >
                       Please enter a valid password
