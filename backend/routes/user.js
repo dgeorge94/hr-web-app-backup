@@ -23,7 +23,7 @@ router.post("/signup", (req, res, next) => {
 
           }).catch(err => {
             res.status(500).json({
-              error: err
+                message: "Invalid authentication credentials"
         });
       });
   });
@@ -34,25 +34,28 @@ router.post("/login", (req, res, next) => {
     .then(user => {
         if(!user) {
           return res.status(401).json({
-            message: 'Auth failed'
+            message: 'Invalid email/password combination'
           });
         }
-        return bcrypt.compare(req.body.password, user.password);
-    })
+        fetchedUser = user;
+        bcrypt.compare(req.body.password, user.password)
       .then(result => {
         if(!result) {
+
           return res.status(401).json({
-            message: 'Auth failed'
+            message: 'Invalid email/password combination'
           });
+
         }
         const token = jwt.sign(
-          { email: user.email, userId: user._id },
+          { email: fetchedUser.email, userId: fetchedUser._id },
           'secret_this_should_be_longer',
           { expiresIn: '1h'});
           res.status(200).json({
             token: token,
             expiresIn: 3600
           });
+        })
       })
       .catch(err => {
         return res.status(401).json({
