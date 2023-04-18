@@ -1,17 +1,11 @@
 <div class="main-div">
   <form (submit)="onSignup(signupForm)" #signupForm="ngForm" autocomplete="off">
     <mat-card class="center-container">
-
       <mat-card-header>
-
           <h2>New User Registration</h2>
-
       </mat-card-header>
-
-
           <mat-form-field class="example-form">
               <mat-label>Email</mat-label>
-
               <input matInput
                      type="email"
                      id="email"
@@ -28,7 +22,6 @@
           </mat-form-field>
           <mat-form-field class="example-form">
               <mat-label>Password</mat-label>
-
               <input matInput
                      type="password"
                      id="password"
@@ -49,7 +42,6 @@
           [disabled]="!signupForm.valid"
           type="submit">
           <h1>Register</h1></button>
-
     </mat-card>
   </form>
 </div>

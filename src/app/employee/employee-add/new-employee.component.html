@@ -58,7 +58,7 @@
           </mat-form-field>
 
           <mat-form-field class="example-form">
-            <mat-label>SSN</mat-label>
+            <mat-label>SSN (no dashes)</mat-label>
             <input matInput
                   type="text"
                   id="SSN"
@@ -100,7 +100,8 @@
                       <mat-datepicker-toggle matIconSuffix [for]="startDatePicker"></mat-datepicker-toggle>
                       <mat-datepicker #startDatePicker></mat-datepicker>
             </mat-form-field>
-
+          <!--  <mat-checkbox class="example-margin" (change)="toggleTerminated()"><mat-label><h3 class="black">Terminated?</h3></mat-label>  </mat-checkbox> -->
+            <!--*ngIf="terminated"-->
             <mat-form-field class="example-form">
               <mat-label>Termination Date</mat-label>
               <input matInput [matDatepicker] = "terminationDatePicker"
@@ -144,9 +145,6 @@
                 #contractLengthInput="ngModel"
                 autocomplete="off">
       </mat-form-field>
-
-
-
       </mat-card>
 
 
@@ -160,3 +158,4 @@
   <h3>Save Employee</h3></button>
 </form>
 </div>
+

@@ -67,17 +67,19 @@
           <td> {{ emp.job }}  </td>
           <td> {{ emp.employmentStatus}} </td>
           <td> {{ emp.employmentStartDate | date:'MM/dd/yyyy'}} - {{emp.employmentTerminationDate | date:'MM/dd/yyyy'}} </td>
-          <td> ${{ emp.salary }}</td>
+          <td> {{ emp.salary.toLocaleString('us-US', {style: 'currency', currency: 'USD'}) }}</td>
         </table>
         </mat-expansion-panel-header>
         <table>
         <td><h3>DOB:</h3> &nbsp;    {{ emp.DOB | date:'MM/dd/yyyy'}}</td>
-        <td><h3>SSN:</h3> &nbsp; {{ emp.SSN }} </td>
+        <td><h3>SSN:</h3> &nbsp; {{ emp.SSN[0] + emp.SSN[1] + emp.SSN[2] + '-' +
+                                    emp.SSN[3] + emp.SSN[4] + '-' +
+                                    emp.SSN[5] + emp.SSN[6] + emp.SSN[7] + emp.SSN[8]}} </td>
         <td><div class="inside-div"><h3>Salary Breakdown</h3>
           <div class="">
-         <h4>Total Salary: </h4>  ${{emp.salary}} &nbsp;
+         <h4>Total Salary: </h4>  {{emp.salary.toLocaleString('us-US', {style: 'currency', currency: 'USD'})}} &nbsp;
           <h4>Contract Length (months): </h4>  {{ emp.contractLength }} &nbsp;
-          <h4>Monthly Payments: </h4> ${{ emp.salary / emp.contractLength}}
+          <h4>Monthly Payments: </h4> {{ (emp.salary / emp.contractLength).toLocaleString('us-US', {style: 'currency', currency: 'USD'})}}
         </div>
         </div></td>
 
