@@ -19,6 +19,7 @@ export class NewEmployeeComponent implements OnInit{
   enteredSalary = 0;
   enteredDOB = "";
   enteredSSN = "";
+  terminated = false;
   post: Employee;
   private mode = "create";
   private postId: string;
@@ -55,17 +56,23 @@ export class NewEmployeeComponent implements OnInit{
     });
   }
 
+//  toggleTerminated() {
+//   if(this.terminated === false) {
+//     this.terminated = true
+//     this.enteredEmploymentStatus = "Terminated";
+//   } else if(this.terminated === true) {
+//     this.terminated = false;
+//     this.enteredEmploymentStatus = 'Active';
+//   }
+// }
+
   onSaveEmployee(form: NgForm) {
     let termination = form.value.employmentTerminationDate;
-
+    console.log(form.value.employmentTerminationDate);
     if (form.invalid) {
       return;
     }
-    if(termination === null) {
-      this.enteredEmploymentStatus = "Active";
-    } else {
-      this.enteredEmploymentStatus = "Terminated";
-    }
+
     if (this.mode ==='create') {
 
 

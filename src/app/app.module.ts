@@ -35,6 +35,7 @@ import { AuthInterceptor } from './auth/auth-interceptor';
 import { ErrorInterceptor } from './error-interceptor';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { ErrorComponent } from './error/error.component';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 
 
@@ -73,6 +74,7 @@ import { ErrorComponent } from './error/error.component';
     MatDatepickerModule,
     MatNativeDateModule,
     MatDialogModule,
+    MatCheckboxModule,
     ReactiveFormsModule,
     ScrollingModule
 
