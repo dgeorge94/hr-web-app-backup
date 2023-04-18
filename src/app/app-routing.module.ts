@@ -12,7 +12,7 @@ const routes: Routes = [
   { path: '', component: LoginComponent},
   { path: 'employee', component: EmployeeComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent},
-  { path: 'signup', component: SignupComponent},
+  { path: 'signup', component: SignupComponent, canActivate: [AuthGuard]},
   { path: 'add-employee', component: NewEmployeeComponent, canActivate: [AuthGuard]},
   { path: 'manage/:postId', component: NewEmployeeComponent, canActivate: [AuthGuard] }
 ];

@@ -5,3 +5,7 @@ body {
 .spacer {
   flex: 1 1 auto;
 }
+
+.spacer-login {
+  margin-left: 2.4%;
+}
