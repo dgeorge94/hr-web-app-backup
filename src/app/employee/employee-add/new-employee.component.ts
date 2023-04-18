@@ -15,7 +15,7 @@ export class NewEmployeeComponent implements OnInit{
   enteredLasstName = "";
   enteredJob = "";
   enteredEmploymentStatus = "";
-  enteredEmployementDate = "";
+  enteredEmploymentTerminationDate = "";
   enteredSalary = 0;
   enteredDOB = "";
   enteredSSN = "";
@@ -66,13 +66,21 @@ export class NewEmployeeComponent implements OnInit{
 //   }
 // }
 
+  onClear(form: NgForm) {
+    this.enteredEmploymentTerminationDate = null;
+  }
+
   onSaveEmployee(form: NgForm) {
     let termination = form.value.employmentTerminationDate;
     console.log(form.value.employmentTerminationDate);
     if (form.invalid) {
       return;
     }
-
+    if(termination === null) {
+      this.enteredEmploymentStatus = "Active";
+    } else {
+      this.enteredEmploymentStatus = "Terminated";
+    }
     if (this.mode ==='create') {
 
 
