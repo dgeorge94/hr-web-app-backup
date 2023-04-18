@@ -3,15 +3,16 @@
     <a *ngIf="!userIsAuthenticated" routerLink="/login"><button mat-menu-item><h4 class="menu-item-h4">Login</h4></button></a>
     <a *ngIf="userIsAuthenticated" routerLink="/employee"><button mat-menu-item><h4 class="menu-item-h4">Employee Database</h4></button></a>
     <a *ngIf="userIsAuthenticated" routerLink="/add-employee"><button mat-menu-item><h4 class="menu-item-h4">Add New Employee</h4></button></a>
-    <a routerLink="/signup"><button mat-menu-item><h4 class="menu-item-h4">New HR User Registration</h4></button></a>
+    <a *ngIf="userIsAuthenticated" routerLink="/signup"><button mat-menu-item><h4 class="menu-item-h4">New HR User Registration</h4></button></a>
   </ng-template>
 </mat-menu>
 
 <mat-toolbar color="primary">
   <mat-toolbar-row>
-    <button mat-icon-button [matMenuTriggerFor]="appMenu">
+    <button *ngIf="userIsAuthenticated" mat-icon-button [matMenuTriggerFor]="appMenu">
       <mat-icon>menu</mat-icon>
     </button>
+    <span *ngIf="!userIsAuthenticated" class="spacer-login"></span>
     <mat-card-title>
     <h1>Arkansas Tech University</h1>
     <mat-card-subtitle>Human Resources</mat-card-subtitle>

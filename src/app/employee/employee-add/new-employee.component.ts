@@ -56,19 +56,6 @@ export class NewEmployeeComponent implements OnInit{
     });
   }
 
-//  toggleTerminated() {
-//   if(this.terminated === false) {
-//     this.terminated = true
-//     this.enteredEmploymentStatus = "Terminated";
-//   } else if(this.terminated === true) {
-//     this.terminated = false;
-//     this.enteredEmploymentStatus = 'Active';
-//   }
-// }
-
-  onClear(form: NgForm) {
-    this.enteredEmploymentTerminationDate = null;
-  }
 
   onSaveEmployee(form: NgForm) {
     let termination = form.value.employmentTerminationDate;
