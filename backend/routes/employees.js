@@ -24,7 +24,12 @@ router.post('', checkAuth, (req, res, next) => {
     console.log(result);
     res.status(201).json({
       message: 'Employee Added Successfully!',
-      epmloyeeID: result._id
+      employeeID: result._id
+    });
+  })
+  .catch(error => {
+    res.status(500).json({
+      message: 'Adding an employee failed.'
     });
   });
 
@@ -48,6 +53,11 @@ router.put("/:id", checkAuth, (req, res, next) => {
     console.log(result);
     res.status(200).json({message: 'Update Successful!'});
   })
+  .catch(error => {
+    res.status(500).json({
+      message: 'Unable to update employee.'
+    });
+  })
 });
 
 router.get('', checkAuth, (req, res, next) => {
@@ -57,6 +67,11 @@ router.get('', checkAuth, (req, res, next) => {
     message: 'Employees fetched successfully!',
     employees: documents
   });
+    })
+    .catch(error => {
+      res.status(500).json({
+        message: 'Fetching employees failed'
+      })
     });
 
 });
@@ -68,6 +83,11 @@ router.get('/:id', checkAuth, (req, res, next) => {
     } else {
       res.status(404).json({message: 'Employee Not Found'});
     }
+  })
+  .catch(error => {
+    res.status(500).json({
+      message: 'Fetching employee failed'
+    })
   })
 })
 

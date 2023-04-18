@@ -30,7 +30,9 @@ export class AuthService{
     .subscribe(response => {
       console.log(response)
       this.router.navigate(['/login']);
-    })
+    }), error => {
+      console.log(error);
+    }
   }
 
   login(userFName: string, userLName: string, email: string, password: string){
@@ -48,6 +50,8 @@ export class AuthService{
         this.saveAuthData(token, expirationDate)
         this.router.navigate(['/employee']);
       }
+      }, error => {
+        this.authStatusListener.next(false);
 
     });
   }

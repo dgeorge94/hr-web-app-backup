@@ -32,6 +32,9 @@ import { SearchBytNumber } from './employee/search-by-tnum.pipe';
 import { SearchByJob } from './employee/search-by-job.pipe';
 import { SearchByEmploymentStatus } from './employee/search-by-emp-status.pipe';
 import { AuthInterceptor } from './auth/auth-interceptor';
+import { ErrorInterceptor } from './error-interceptor';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { ErrorComponent } from './error/error.component';
 
 
 
@@ -48,7 +51,8 @@ import { AuthInterceptor } from './auth/auth-interceptor';
     SearchByLastName,
     SearchBytNumber,
     SearchByJob,
-    SearchByEmploymentStatus
+    SearchByEmploymentStatus,
+    ErrorComponent
 
   ],
   imports: [
@@ -68,12 +72,17 @@ import { AuthInterceptor } from './auth/auth-interceptor';
     MatTableModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatDialogModule,
     ReactiveFormsModule,
     ScrollingModule
 
 
   ],
-  providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}],
-  bootstrap: [AppComponent]
+  providers: [
+    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
+    {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true}
+  ],
+  bootstrap: [AppComponent],
+  entryComponents: [ErrorComponent]
 })
 export class AppModule { }
